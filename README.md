@@ -2,7 +2,7 @@
 
 Welcome to the Alcatel-Lucent Enterprise **Starter-Kit Rainbow SDK for Node.JS with Watson**!
 
-The Alcatel-Lucent Enterprise (ALE) Starter-Kit Rainbow SDK for Node.JS is a basic sample for starting your development using the SDK for Node.JS and Watson in an easy way and within an advanced environment.
+The Alcatel-Lucent Enterprise (ALE) Starter-Kit Rainbow SDK for Node.JS Watson is a basic sample for starting your development using the SDK for Node.JS and Watson in an easy way and within an advanced environment.
 
 
 ## Preamble
@@ -35,7 +35,7 @@ Note: You have to teach Watson on the natural language you want that the bot und
 
 ## Setup
 
-In order to setup your application, you have to configure 2 JSON files:
+In order to setup your application, you have to configure 4 JSON files:
 
 - `app/config/bot.json`: This file contains the paremeters for the SDK for Node.JS. Modify it with your Rainbow account.
 
