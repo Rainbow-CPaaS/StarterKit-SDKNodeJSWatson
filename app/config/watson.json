@@ -1,0 +1,9 @@
+{
+    "url": "https://gateway.watsonplatform.net/conversation/api",
+    "username": "...",              
+    "password": "...",
+    "version_date": "2018-02-16",
+    "path": { 
+        "workspace_id": "..."
+    } 
+}
