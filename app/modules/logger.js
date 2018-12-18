@@ -1,6 +1,6 @@
 "use strict";
 
-const winston = require("winston");
+const Winston = require("winston");
 const LOG_ID = "STARTER/LOGS - ";
 
 const tsFormat = () => {
@@ -14,9 +14,9 @@ class Logger {
 
     constructor() {
 
-        this._logger = new (winston.Logger)({
+        this._logger = Winston.createLogger({
             transports: [
-                new (winston.transports.Console)({ 
+                new (Winston.transports.Console)({ 
                     colorize: true, 
                     timestamp: tsFormat, 
                     level: "debug" 

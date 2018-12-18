@@ -9,7 +9,7 @@ chai.use(chaiAsPromised);
 
 describe('A module', function() {
 
-    it('should have instanciate a new module', function() {
+    it('should have instantiate a new module', function() {
         let aModule = new AModule();
         expect(aModule).is.a('object');
     });

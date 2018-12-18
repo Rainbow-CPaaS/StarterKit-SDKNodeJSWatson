@@ -16,7 +16,7 @@ class Router {
     constructor() {
         logger.log("debug", LOG_ID + "constructor()");
         this.protocol = "http";
-        this.port = 8888;
+        this.port = process.env.PORT || 8888;
         this.sdk = null;
     }
 
@@ -24,12 +24,12 @@ class Router {
 
         return new Promise((resolve) => {
             this.protocol = config.protocol;
-            this.port = config.port;
+            this.port = process.env.PORT || config.port;
             this.sdk = sdk;
     
             if(argv.length === 6) {
                 this.protocol = argv[4];
-                this.port = argv[5];
+                this.port = process.env.PORT || argv[5];
                 logger.log("info", LOG_ID + "serving " + this.protocol + " requests on port " + this.port + " (forced by CLI)");
             } else {
                 logger.log("info", LOG_ID + "serving " + this.protocol + " requests on port " + this.port);
@@ -57,7 +57,7 @@ class Router {
             this.defineRoute();
     
             // Define default route to bot
-            app.use("/botsample", router);
+            app.use("/health", router);
         });
     }
 
@@ -95,5 +95,3 @@ class Router {
 }
 
 module.exports = new Router();
-
-

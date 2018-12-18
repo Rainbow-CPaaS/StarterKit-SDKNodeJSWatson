@@ -37,7 +37,7 @@ Note: You have to teach Watson on the natural language you want that the bot und
 
 In order to setup your application, you have to configure 4 JSON files:
 
-- `app/config/bot.json`: This file contains the paremeters for the SDK for Node.JS. Modify it with your Rainbow account.
+- `app/config/bot.json`: This file contains the parameters for the SDK for Node.JS. Modify it with your Rainbow account.
 
 - `app/config/router.json`: This file contains the default parameter for the embedded web server. Modify it according to your needs.
 
@@ -58,17 +58,17 @@ $ node index.js
 
 Your Node.JS contains an embedded server with 3 default routes:
 
-- `GET .../botsample/ping`: API for having an health check of your application
+- `GET .../health/ping`: API for having an health check of your application
 
-- `POST .../botsample/sdk/restart`: API for restarting the SDK for Node.JS (stop and start).
+- `POST .../health/sdk/restart`: API for restarting the SDK for Node.JS (stop and start).
 
-- `GET .../botsample/sdk/status`: API for having a status of the SDK for Node.JS
+- `GET .../health/sdk/status`: API for having a status of the SDK for Node.JS
 
-You can test these routes using CURL. Here is an example of testing the `botsample/ping` route when the Web Server is launched using `HTTP` and port `3002`:
+You can test these routes using CURL. Here is an example of testing the `health/ping` route when the Web Server is launched using `HTTP` and port `3002`:
 
 ```bash
 
-$ curl -X GET http://localhost:3002/botsample/ping
+$ curl -X GET http://localhost:3002/health/ping
 > {"code":0}
 
 ```
@@ -76,7 +76,7 @@ $ curl -X GET http://localhost:3002/botsample/ping
 Note: When testing in HTTPS, default self-signed certificates are proposed. For testing with CURL, you have to add the parameter `-k` to avoid the CURL's verification like as follows (launched with `HTTPS` and port `3003`):
 
 ```bash
-$ curl -X GET https://localhost:3003/botsample/ping -k
+$ curl -X GET https://localhost:3003/health/ping -k
 > {"code":0}
 
 ```
@@ -92,7 +92,7 @@ Basic rules for Node.JS JavaScript development have been added.
 
 Tests have to be added in directory `test`.
 
-to launch the test, open a sheel and execute the following command:
+to launch the test, open a shell and execute the following command:
 
 ```bash
 
@@ -118,7 +118,7 @@ New modules can be added to your application in directory `app`.
 
 Thanks to Dockerfile available a root directory, you are able to run the current Starter Kit into Docker.
 
-After Docker installation ( See [Docker](https://www.docker.com/community-edition) ), run the following commandto build your own image.
+After Docker installation ( See [Docker](https://www.docker.com/community-edition) ), run the following command to build your own image.
 
 ```
 docker build -t rainbow-api-hub/startkit-sdk-nodejs .
@@ -130,11 +130,20 @@ docker build -t rainbow-api-hub/startkit-sdk-nodejs .
 
 - `RAINBOW_BOT_PASSWORD` (_mandatory_): User password associated to your bot.
 
+- `RAINBOW_BOT_APPID` (_mandatory_): Application ID associated to your bot.
+
+- `RAINBOW_BOT_APPSECRET` (_mandatory_): Application Secret associated to your bot.
+
 - `RAINBOW_HOST` (_optional_, default value: sandbox.openrainbow.com ): Target host where your want to  run your bot.
 
+you have also to take into account the IBM Watson Assistant settings, please take a look in [Assistant V2 documentation](https://console.bluemix.net/apidocs/assistant-v2), for more information.
 
 Use the following command in order to start you container instance, with the port 8888 as REST api entry point port
 
 ```
-docker run -p 8888:8080 -e RAINBOW_BOT_LOGIN=<BOT_EMAIL> -e RAINBOW_BOT_PASSWORD=<BOT_PWD> -t rainbow-api-hub/startkit-sdk-nodejs
+docker run -p 8888:8080 -e RAINBOW_BOT_LOGIN=<BOT_EMAIL> -e RAINBOW_BOT_PASSWORD=<BOT_PWD> ... -t rainbow-api-hub/startkit-sdk-nodejs
 ```
+
+## Cloudfoundry support
+
+Thank you the manifest.yml file, you are able to deploy the project into cloudfoundry infrastructure like IBM Bluemix.

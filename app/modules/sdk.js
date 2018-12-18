@@ -40,7 +40,7 @@ class SDK {
                         logger.log("info", LOG_ID + "watson is configured. Use it to understand the message");
 
                         // Send an answer the message to Watson
-                        this.watson.sendMessage(message.content).then( (answer) => {
+                        this.watson.sendMessage(message.content, message.conversation.id).then( (answer) => {
 
                             let returnMessage = "";
 

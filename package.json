@@ -18,9 +18,9 @@
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "rainbow-node-sdk": "^1.37.0",
-    "watson-developer-cloud": "^3.0.7",
-    "winston": "^2.4.0"
+    "rainbow-node-sdk": "^1.49.0",
+    "watson-developer-cloud": "^3.15.0",
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -34,6 +34,6 @@
     "sinon-chai": "^2.14.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   }
 }
