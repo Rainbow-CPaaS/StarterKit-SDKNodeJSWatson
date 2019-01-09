@@ -92,7 +92,18 @@ class SDK {
 
     restart() {
         return new Promise((resolve, reject) => {
-            this.nodeSDK.stop().then(() => {
+            this.nodeSDK.events.once('rainbow_onstopped', (data) => {
+                logger.log("debug", LOG_ID + "SDK - rainbow_onstopped - rainbow event received. data", data);
+
+                logger.log("debug",  LOG_ID + "SDK - rainbow_onstopped rainbow SDK will re start");
+                this.nodeSDK.start().then(() => {
+                    resolve();
+                });
+            });
+
+            this.nodeSDK.stop();
+
+            /*this.nodeSDK.stop().then(() => {
                 logger.log("debug", LOG_ID + "SDK stopped");
                 return this.nodeSDK.start();
             }).then(() => {
@@ -101,6 +112,7 @@ class SDK {
             }).catch((err) => {
                 reject(err);
             });
+            // */
         });
     }
 
