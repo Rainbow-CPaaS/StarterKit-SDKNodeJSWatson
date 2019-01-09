@@ -9,9 +9,17 @@ const router = require('./app/modules/router');
 const Watson = require('./app/modules/watson');
 
 // Load configuration
-const bot = require("./app/config/bot.json");
+//const bot = require("./app/config/bot.json");
 const defaultServer = require("./app/config/router.json");
 const watsonServer = require("./app/config/watson.json");
+const json = require('comment-json');
+const fs = require('fs');
+const botfile = fs.readFileSync("./app/config/bot.json");
+let txt = botfile.toString();
+let bot = json.parse(txt);
+
+json.stringify(bot, null, 2);
+
 
 const LOG_ID = "STARTER/INDX - ";
 
